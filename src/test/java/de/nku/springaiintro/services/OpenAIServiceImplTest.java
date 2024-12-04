@@ -1,5 +1,7 @@
 package de.nku.springaiintro.services;
 
+import de.nku.springaiintro.models.Answer;
+import de.nku.springaiintro.models.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +37,17 @@ class OpenAIServiceImplTest {
         System.out.println("Frage: " + question);
         System.out.println("=======================");
         System.out.println(answer);
+        System.out.println("=======================");
+    }
+
+    @Test
+    void getAnswerAsRecord() {
+        String question = prompts[(int) ((Math.random() * prompts.length) + 1)];
+        Answer answer = service.getAnswer(new Question(question));
+        System.out.println("=======================");
+        System.out.println("Frage: " + question);
+        System.out.println("=======================");
+        System.out.println(answer.answer());
         System.out.println("=======================");
     }
 }
