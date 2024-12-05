@@ -1,6 +1,7 @@
 package de.nku.springaiintro.controllers;
 
 import de.nku.springaiintro.models.Answer;
+import de.nku.springaiintro.models.GetCapitalRequest;
 import de.nku.springaiintro.models.Question;
 import de.nku.springaiintro.services.OpenAIService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,5 +20,10 @@ public class QuestionController {
     @PostMapping("/ask")
     public Answer askQuestion(@RequestBody Question question) {
         return openAIService.getAnswer(question);
+    }
+
+    @PostMapping("/capital")
+    public Answer getCapitalRequest(@RequestBody GetCapitalRequest getCapitalRequest) {
+        return openAIService.getCapitalRequest(getCapitalRequest);
     }
 }
