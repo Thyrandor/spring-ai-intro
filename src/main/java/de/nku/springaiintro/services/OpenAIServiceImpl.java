@@ -29,6 +29,7 @@ public class OpenAIServiceImpl implements OpenAIService {
 
     @Override
     public Answer getAnswer(Question question) {
+        System.out.println("=== Frage: " + question.question());
         PromptTemplate promptTemplate = new PromptTemplate(question.question());
         Prompt prompt = promptTemplate.create();
 
