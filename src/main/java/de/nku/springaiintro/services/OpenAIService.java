@@ -7,6 +7,6 @@ import de.nku.springaiintro.models.Question;
 public interface OpenAIService {
     String getAnswer(String question);
     Answer getAnswer(Question question);
-    Answer getCapitalRequest(GetCapitalRequest request);
-
+    Answer getCapital(GetCapitalRequest request);
+    Answer getCapitalWithInfo(GetCapitalRequest getCapitalRequest);
 }
