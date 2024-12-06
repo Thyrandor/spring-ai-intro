@@ -1,9 +1,6 @@
 package de.nku.springaiintro.services;
 
-import de.nku.springaiintro.models.Answer;
-import de.nku.springaiintro.models.GetCapitalRequest;
-import de.nku.springaiintro.models.GetCapitalResponse;
-import de.nku.springaiintro.models.Question;
+import de.nku.springaiintro.models.*;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -65,12 +62,15 @@ public class OpenAIServiceImpl implements OpenAIService {
     }
 
     @Override
-    public Answer getCapitalWithInfo(GetCapitalRequest request) {
+    public GetCapitalResponseWithInfo getCapitalWithInfo(GetCapitalRequest request) {
+        BeanOutputConverter<GetCapitalResponseWithInfo> converter = new BeanOutputConverter<>(GetCapitalResponseWithInfo.class);
+        String format = converter.getFormat();
+
         PromptTemplate promptTemplate = new PromptTemplate(getCapitalWithInfo);
-        Prompt prompt = promptTemplate.create(Map.of("stateOrCountry", request.stateOrCountry()));
+        Prompt prompt = promptTemplate.create(Map.of("stateOrCountry", request.stateOrCountry(), "format", format));
 
         ChatResponse response = chatModel.call(prompt);
 
-        return new Answer(response.getResult().getOutput().getContent());
+        return converter.convert(response.getResult().getOutput().getContent());
     }
 }

@@ -1,7 +1,6 @@
 package de.nku.springaiintro.services;
 
 import de.nku.springaiintro.models.Answer;
-import de.nku.springaiintro.models.GetCapitalRequest;
 import de.nku.springaiintro.models.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +51,11 @@ class OpenAIServiceImplTest {
         System.out.println("=======================");
     }
 
-    @Test
-    void getCaptalWithInfoTest() {
-        Answer answer = service.getCapitalWithInfo(new GetCapitalRequest("Oberbergischer Kreis"));
-        System.out.println("=======================");
-        System.out.println(answer.answer());
-        System.out.println("=======================");
-    }
+//    @Test
+//    void getCaptalWithInfoTest() {
+//        Answer answer = service.getCapitalWithInfo(new GetCapitalRequest("Oberbergischer Kreis"));
+//        System.out.println("=======================");
+//        System.out.println(answer.answer());
+//        System.out.println("=======================");
+//    }
 }

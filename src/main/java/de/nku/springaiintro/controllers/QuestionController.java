@@ -1,9 +1,6 @@
 package de.nku.springaiintro.controllers;
 
-import de.nku.springaiintro.models.Answer;
-import de.nku.springaiintro.models.GetCapitalRequest;
-import de.nku.springaiintro.models.GetCapitalResponse;
-import de.nku.springaiintro.models.Question;
+import de.nku.springaiintro.models.*;
 import de.nku.springaiintro.services.OpenAIService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +26,7 @@ public class QuestionController {
     }
 
     @PostMapping("/capitalWithInfo")
-    public Answer getCapitalWithInfo(@RequestBody GetCapitalRequest getCapitalRequest) {
+    public GetCapitalResponseWithInfo getCapitalWithInfo(@RequestBody GetCapitalRequest getCapitalRequest) {
         return openAIService.getCapitalWithInfo(getCapitalRequest);
     }
 }
